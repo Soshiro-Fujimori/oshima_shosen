@@ -1,54 +1,53 @@
-// 2次元配列の実習だから2次元配列を使ったけど、
-// 2次元配列使うのナンセンスでは？
+// 2�����z��̎��K������2�����z����g�������ǁA
+// 2�����z��g���̃i���Z���X�ł́H
 
 #include <stdio.h>
 
 int main(void)
 {
-    // twoSubPoint[生徒番号][科目番号]
-    int twoSubPoint[6][2];
-    // ttlAndAvrg2[生徒番号][合計:0, 平均:1];
-    int ttlAndAvrg2[6][2];
+    // twoSubPoint[���k�ԍ�][�Ȗڔԍ�]
+    int twoSubPoint[6][2] = {0};
+    // ttlAndAvrg2[���k�ԍ�][���v:0, ����:1];
+    int ttlAndAvrg2[6][2] = {0};
 
 
-    puts("6人の国語・数学の点数を入力してください。");
+    puts("6�l�̍���E���w�̓_������͂��Ă��������B");
     for (int stdntNum = 0; stdntNum < 6; stdntNum++)
     {
         for (int subjctNum = 0; subjctNum < 2; subjctNum++)
         {
-            printf("%d人目の%d科目の点数を入力：", stdntNum+1, subjctNum+1);
+            printf("%d�l�ڂ�%d�Ȗڂ̓_������́F", stdntNum+1, subjctNum+1);
             scanf("%d", &twoSubPoint[stdntNum][subjctNum]);
         }
     }
     printf("\n");
     
 
-    puts("科目ごとの合計点と平均点");
-    // ttlAndAvrg1[科目番号][合計:0, 平均:1];
-    int ttlAndAvrg[2][2];
+    puts("�Ȗڂ��Ƃ̍��v�_�ƕ��ϓ_");
     for (int subjctNum = 0; subjctNum < 2; subjctNum++) 
     {
-        for (int stdntNum = 0; stdntNum < 6; stdntNum++)
-        {
-            ttlAndAvrg[subjctNum][0] += twoSubPoint[stdntNum][subjctNum];
-        }
+        int total = 0;
+        int avrg = 0;
 
         for (int stdntNum = 0; stdntNum < 6; stdntNum++)
         {
-            ttlAndAvrg[subjctNum][1] = ttlAndAvrg[subjctNum][0] / 6;
+            total += twoSubPoint[stdntNum][subjctNum];
         }
+
+        avrg = total / 6;
+
+        if(subjctNum == 0) printf("����F���v%3d�_�@���ϓ_%3d�_\n", total, avrg);
+        if(subjctNum == 1) printf("���w�F���v%3d�_�@���ϓ_%3d�_\n", total, avrg);
     }
-    printf("国語：合計%3d点　平均点%3d点\n", ttlAndAvrg[0][0], ttlAndAvrg[0][1]);
-    printf("数学：合計%3d点　平均点%3d点\n", ttlAndAvrg[1][0], ttlAndAvrg[1][1]);
     printf("\n");
 
 
-    puts("学生ごとの合計点と平均点");
+    puts("�w�����Ƃ̍��v�_�ƕ��ϓ_");
     for (int stdntNum = 0; stdntNum < 6; stdntNum++) 
     {
         int tottal = twoSubPoint[stdntNum][0] + twoSubPoint[stdntNum][1];
         int averge = tottal / 2;
-        printf("%d人目：合計%3d点　平均点%3d点\n", tottal, averge);
+        printf("%d�l�ځF���v%3d�_�@���ϓ_%3d�_\n", stdntNum + 1, tottal, averge);
     }
     printf("\n");
 }

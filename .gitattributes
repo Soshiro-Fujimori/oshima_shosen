@@ -67,3 +67,4 @@
 *.xsl diff=excel
 *.xlsx diff=zip
 *.docx diff=zip
+*.c diff=sjis
